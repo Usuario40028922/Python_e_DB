@@ -6,13 +6,8 @@ import mysql.connector
 
 #Variáveis
 mydb = mysql.connector.connect(host="localhost", user="root")
-
-cursor = mydb.cursor()
-
-bd = None
-
-
-
+#dictionary = True, opcional
+cursor = mydb.cursor(dictionary = True) 
 
 #Funções
 def oque_vc_quer_rappa():
@@ -31,16 +26,13 @@ def create_database(nome):
 
 print(mydb)
 
-cursor.execute("USE aula_db;")
+#cursor.execute("USE aula_db;")
 
-cursor.execute('''
-CREATE TABLE IF NOT EXISTS alunos(
-  id INT AUTO_INCREMENT NOT NULL, 
-  nome VARCHAR(30),
-  idade INT,
-  PRIMARY KEY(id)
-  );
+#cursor.execute()
 
+cursor.execute("SHOW DATABASES;")
 
-''')
+for registro in cursor.fetchall():
+  print(f"")  
 
+mydb.close()
