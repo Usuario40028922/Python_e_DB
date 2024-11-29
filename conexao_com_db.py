@@ -11,15 +11,17 @@ cursor = connection.cursor()
 cursor.execute("CREATE DATABASE IF NOT EXISTS Receita_Federal")
 cursor.execute("use Receita_Federal")
 
+
+cursor.execute("DROP TABLE vitima")
 cursor.execute('''
+    
     CREATE TABLE IF NOT EXISTS vitima (
-        id INT AUTO_INCREMENT PRIMARY KEY,
-        renda DECIMAL(10, 2) NOT NULL,
-        cpf VARCHAR(14) NOT NULL UNIQUE,
+        renda float NOT NULL,
+        cpf INT(11) NOT NULL UNIQUE AUTO_INCREMENT PRIMAY KEY,
         nome VARCHAR(255) NOT NULL,
         endereco VARCHAR(255) NOT NULL,
-        telefone VARCHAR(15) NOT NULL,
-        tipo_pessoa ENUM('Física', 'Jurídica') NOT NULL
+        telefone INT(9) NOT NULL,
+        tipo_pessoa VARCHAR(8) NOT NULL
     );
 ''')
 
@@ -27,3 +29,13 @@ cursor.execute("show tables")
 
 for tabela in cursor:
     print(tabela)
+    
+
+cursor.execute('''CREATE TABLE Impostos(
+
+    vitima_renda FLOAT NOT NULL,
+    vitima_cpf INT(11) NOT NULL,
+
+)
+''')
+                 
