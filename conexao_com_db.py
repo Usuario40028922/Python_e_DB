@@ -8,34 +8,27 @@ connection = mysql.connector.connect(
 
 cursor = connection.cursor()
 
-cursor.execute("CREATE DATABASE IF NOT EXISTS Receita_Federal")
-cursor.execute("use Receita_Federal")
-
-
-cursor.execute("DROP TABLE vitima")
-cursor.execute('''
+def ain(oque):
+    cursor.execute(f"{oque}")
     
-    CREATE TABLE IF NOT EXISTS vitima (
-        renda float NOT NULL,
-        cpf INT(11) NOT NULL UNIQUE AUTO_INCREMENT PRIMAY KEY,
+#ain("CREATE DATABASE IF NOT EXISTS Receita_Federal")
+ain("USE Receita_Federal")
+ain("DROP TABLE Vitima")
+ain('''CREATE TABLE IF NOT EXISTS Vitima (
+        renda double NOT NULL,
+        cpf BIGINT NOT NULL AUTO_INCREMENT PRIMARY KEY,
         nome VARCHAR(255) NOT NULL,
         endereco VARCHAR(255) NOT NULL,
-        telefone INT(9) NOT NULL,
-        tipo_pessoa VARCHAR(8) NOT NULL
-    );
-''')
-
-cursor.execute("show tables")
+        telefone VARCHAR(20) NOT NULL,
+        tipo_pessoa VARCHAR(8) NOT NULL)
+    ''')
+#ain("ALTER TABLE Vitima AUTO_INCREMENT = 11111111111")
+ain("INSERT INTO Vitima(renda, nome, endereco, telefone, tipo_pessoa) VALUES(0.5, 'Amogus', 'Rua de ninguém', '+55(22)3456-789', 'Jurídica')")
+ain("SELECT * FROM Vitima")
 
 for tabela in cursor:
     print(tabela)
-    
 
-cursor.execute('''CREATE TABLE Impostos(
+cursor.close()
+connection.close()
 
-    vitima_renda FLOAT NOT NULL,
-    vitima_cpf INT(11) NOT NULL,
-
-)
-''')
-                 
