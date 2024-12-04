@@ -25,10 +25,17 @@ ain('''CREATE TABLE IF NOT EXISTS Vitima (
 #ain("ALTER TABLE Vitima AUTO_INCREMENT = 11111111111")
 ain("INSERT INTO Vitima(renda, nome, endereco, telefone, tipo_pessoa) VALUES(0.5, 'Amogus', 'Rua de ninguém', '+55(22)3456-789', 'Jurídica')")
 ain("SELECT * FROM Vitima")
+ain('''
 
+    CREATE TABLE IF NOT EXISTS Impostos(
+    
+        
+
+    )
+
+''')
 for tabela in cursor:
     print(tabela)
 
 cursor.close()
 connection.close()
-
